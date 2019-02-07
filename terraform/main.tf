@@ -1,6 +1,17 @@
 resource "azurerm_resource_group" "default" {
   name     = "${var.name}-${var.environment}-rg"
   location = "${var.location}"
+
+  tags = "${var.tags}"
+}
+
+resource "azurerm_application_insights" "default" {
+  name                = "${var.name}-ai"
+  location            = "${azurerm_resource_group.default.location}"
+  resource_group_name = "${azurerm_resource_group.default.name}"
+  application_type    = "Web"
+
+  tags = "${var.tags}"
 }
 
 resource "azurerm_log_analytics_workspace" "default" {
@@ -9,6 +20,8 @@ resource "azurerm_log_analytics_workspace" "default" {
   resource_group_name = "${azurerm_resource_group.default.name}"
   sku                 = "PerGB2018"
   retention_in_days   = 30
+
+  tags = "${var.tags}"
 }
 
 resource "azurerm_kubernetes_cluster" "default" {
@@ -38,12 +51,4 @@ resource "azurerm_kubernetes_cluster" "default" {
   }
 
   tags = "${var.tags}"
-}
-
-output "client_certificate" {
-  value = "${azurerm_kubernetes_cluster.default.kube_config.0.client_certificate}"
-}
-
-output "kube_config" {
-  value = "${azurerm_kubernetes_cluster.default.kube_config_raw}"
 }
