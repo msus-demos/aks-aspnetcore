@@ -11,7 +11,7 @@ terraform workspace select $ENVIRONMENT
 terraform plan \
     -var environment="$ENVIRONMENT" \
     -var client_id="$CLIENT_ID" \
-    -var client_secrute="$CLIENT_SECRET" \
+    -var client_secret="$CLIENT_SECRET" \
     -out=$ENVIRONMENT.tfplan \
     -input=false 
 
