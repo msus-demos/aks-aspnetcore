@@ -53,7 +53,7 @@ variable "node_type" {
 variable "node_os" {
   type        = "string"
   description = "Windows or Linux"
-  default     = "linux"
+  default     = "Linux"
 }
 
 variable "dns_prefix" {
