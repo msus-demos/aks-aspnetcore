@@ -16,4 +16,4 @@ terraform plan \
     -input=false 
 
 # Apply the environment changes
-terraform apply -input=false $ENVIRONMENT.tfplangit 
+terraform apply -input=false $ENVIRONMENT.tfplan
