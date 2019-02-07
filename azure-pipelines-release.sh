@@ -10,8 +10,10 @@ terraform workspace select $ENVIRONMENT
 # Generate a Plan for the deployment
 terraform plan \
     -var environment="$ENVIRONMENT" \
+    -var client_id="$CLIENT_ID" \
+    -var client_secrute="$CLIENT_SECRET" \
     -out=$ENVIRONMENT.tfplan \
     -input=false 
 
 # Apply the environment changes
-terraform apply -input=false $ENVIRONMENT.tfplan
+terraform apply -input=false $ENVIRONMENT.tfplangit 
