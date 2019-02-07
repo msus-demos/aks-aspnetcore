@@ -13,13 +13,14 @@ steps:
 
 # Verify template and generate terraform plan
 - script: |
+    cd terraform
     terraform fmt -check=true
   displayName: Verify template
 
 # Copy Terraform files to the staging directory
 - task: CopyFiles@2
   inputs:
-    sourceFolder: $(Build.SourcesDirectory)
+    sourceFolder: $(Build.SourcesDirectory)/terraform
     contents: |
       **/*
       !.terraform/**/*
