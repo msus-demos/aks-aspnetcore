@@ -32,8 +32,12 @@ variable "location" {
 
 variable tags {
   type        = "map"
-  description = "Tags to apply to this resource and group"
-  default     = {}
+  description = "Tags to apply on all groups and resources."
+
+  default = {
+    mtc-architect = "Joey Lorich"
+    deployed-with = "Terraform"
+  }
 }
 
 // Node type information
