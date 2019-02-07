@@ -20,6 +20,12 @@ namespace demo_aspnetcore_mvc.Controllers
             return View();
         }
 
+
+        public IActionResult ThrowError()
+        {
+            throw new NotImplementedException();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
