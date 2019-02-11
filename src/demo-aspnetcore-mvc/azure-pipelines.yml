@@ -31,8 +31,8 @@ steps:
 # Stage helm chart
 - task: CopyFiles@2
   inputs:
-    sourceFolder: src/demo-aspnet-core/charts
-    targetFolder: $(Build.ARtifactStagingDirectory)
+    sourceFolder: src/demo-aspnetcore-mvc/charts
+    targetFolder: $(Build.ArtifactStagingDirectory)
 
 # Publish build artifacts
 - task: PublishBuildArtifacts@1
