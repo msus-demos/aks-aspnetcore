@@ -11,6 +11,8 @@ pool:
   vmImage: 'Ubuntu-16.04'
 
 steps:
+
+# Docker Build
 - task: Docker@1
   displayName: 'Build an image'
   inputs:
@@ -18,9 +20,22 @@ steps:
     azureContainerRegistry: mtcdensandboxdemo.azurecr.io
     dockerFile: 'src/demo-aspnetcore-mvc/Dockerfile'
 
+# Docker Push
 - task: Docker@1
   displayName: 'Push an image'
   inputs:
     azureSubscriptionEndpoint: 'MTC Denver Sandbox (b0e04a4a-a321-4b66-b8fd-13715262ba3c)'
     azureContainerRegistry: mtcdensandboxdemo.azurecr.io
     command: 'Push an image'
+
+# Stage helm chart
+- task: CopyFiles@2
+  inputs:
+    sourceFolder: src/demo-aspnet-core/charts
+    targetFolder: $(Build.ARtifactStagingDirectory)
+
+# Publish build artifacts
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    artifactName: drop
