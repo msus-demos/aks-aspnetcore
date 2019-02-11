@@ -1,4 +1,5 @@
 FROM microsoft/dotnet:2.2-sdk as build
+ARG BUILD_CONFIGURATION=Release
 ENV PORT 8080
 EXPOSE 8080
 
