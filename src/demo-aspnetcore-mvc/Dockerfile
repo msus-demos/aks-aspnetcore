@@ -1,11 +1,16 @@
-FROM node:8
+FROM microsoft/dotnet:2.2-sdk as build
 ENV PORT 8080
 EXPOSE 8080
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
-COPY package.json .
-RUN npm install
-COPY . .
+RUN mkdir -p /app
 
-CMD ["npm", "start"]
+WORKDIR /app
+COPY . ./
+RUN ls
+
+RUN dotnet publish -c $BUILD_CONFIGURATION -o out
+
+FROM microsoft/dotnet:2.2-aspnetcore-runtime AS runtime
+WORKDIR /app
+COPY --from=build /app/out ./
+ENTRYPOINT ["dotnet", "demo-aspnetcore-mvc.dll"]

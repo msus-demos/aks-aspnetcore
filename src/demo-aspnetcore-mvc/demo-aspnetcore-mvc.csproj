@@ -4,12 +4,20 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <RootNamespace>demo_aspnetcore_mvc</RootNamespace>
+    <ApplicationInsightsResourceId>/subscriptions/b0e04a4a-a321-4b66-b8fd-13715262ba3c/resourcegroups/demo-aks-sandbox-rg/providers/microsoft.insights/components/demo-aks-ai</ApplicationInsightsResourceId>
+    <ApplicationInsightsAnnotationResourceId>/subscriptions/b0e04a4a-a321-4b66-b8fd-13715262ba3c/resourcegroups/demo-aks-sandbox-rg/providers/microsoft.insights/components/demo-aks-ai</ApplicationInsightsAnnotationResourceId>
   </PropertyGroup>
 
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
   </ItemGroup>
 
 </Project>

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using demo_aspnetcore_mvc.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace demo_aspnetcore_mvc.Controllers
 {

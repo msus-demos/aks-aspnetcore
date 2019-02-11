@@ -11,10 +11,16 @@ pool:
   vmImage: 'Ubuntu-16.04'
 
 steps:
-- script: |
-    cd src/demo-aspnetcore-mvc
-    dotnet publish -c release -o $(build.artifactStagingDirectory)
-    cp -R charts $(build.artifactStagingDirectory)
-  displayName: Publish application
+- task: Docker@1
+  displayName: 'Build an image'
+  inputs:
+    azureSubscriptionEndpoint: 'MTC Denver Sandbox (b0e04a4a-a321-4b66-b8fd-13715262ba3c)'
+    azureContainerRegistry: mtcdensandboxdemo.azurecr.io
+    dockerFile: 'src/demo-aspnetcore-mvc/Dockerfile'
 
-- task: PublishBuildArtifacts@1
+- task: Docker@1
+  displayName: 'Push an image'
+  inputs:
+    azureSubscriptionEndpoint: 'MTC Denver Sandbox (b0e04a4a-a321-4b66-b8fd-13715262ba3c)'
+    azureContainerRegistry: mtcdensandboxdemo.azurecr.io
+    command: 'Push an image'
