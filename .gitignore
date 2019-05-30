@@ -4,3 +4,5 @@ bin
 debug
 obj
 .vs
+*.tfstate*
+*.terraform
