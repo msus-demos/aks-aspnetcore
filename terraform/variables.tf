@@ -70,9 +70,9 @@ variable "vnet_address_space" {
   default     = "10.0.0.0/8"
 }
 
-variable "vnet_aks_subnet_space" {
+variable "vnet_pod_subnet_space" {
   type        = "string"
-  description = "Address space for the AKS subnet"
+  description = "Address space for the pod subnet"
   default     = "10.1.0.0/16"
 }
 

@@ -7,10 +7,10 @@ resource "azurerm_virtual_network" "default" {
 }
 
 # Subnets
-resource "azurerm_subnet" "aks" {
-  name                 = "${var.name}-aks-subnet"
+resource "azurerm_subnet" "pod" {
+  name                 = "${var.name}-pod-subnet"
   resource_group_name  = "${azurerm_resource_group.default.name}"
-  address_prefix       = "${var.vnet_aks_subnet_space}"
+  address_prefix       = "${var.vnet_pod_subnet_space}"
   virtual_network_name = "${azurerm_virtual_network.default.name}"
 }
 
@@ -29,8 +29,8 @@ resource "azurerm_subnet" "gateway" {
 }
 
 # Network security groups
-resource azurerm_network_security_group "aks" {
-  name                = "${var.name}-aks-nsg"
+resource azurerm_network_security_group "pod" {
+  name                = "${var.name}-pod-nsg"
   location            = "${azurerm_resource_group.default.location}"
   resource_group_name = "${azurerm_resource_group.default.name}"
 
@@ -121,8 +121,8 @@ resource azurerm_network_security_group "gateway" {
 
 # Network security group associations
 resource "azurerm_subnet_network_security_group_association" "pod" {
-  subnet_id                 = "${azurerm_subnet.aks.id}"
-  network_security_group_id = "${azurerm_network_security_group.aks.id}"
+  subnet_id                 = "${azurerm_subnet.pod.id}"
+  network_security_group_id = "${azurerm_network_security_group.pod.id}"
 }
 
 resource "azurerm_subnet_network_security_group_association" "ingress" {
