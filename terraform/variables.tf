@@ -31,22 +31,29 @@ variable tags {
 
 // Node type information
 
-variable "node_count" {
+variable "linux_node_count" {
   type        = "string"
   description = "The number of K8S nodes to provision."
   default     = 3
 }
 
-variable "node_type" {
+variable "windows_node_count" {
+  type        = "string"
+  description = "The number of K8S nodes to provision."
+  default     = 3
+}
+
+
+variable "linux_node_sku" {
   type        = "string"
   description = "The size of each node."
   default     = "Standard_D1_v2"
 }
 
-variable "node_os" {
+variable "windows_node_sku" {
   type        = "string"
-  description = "Windows or Linux"
-  default     = "Linux"
+  description = "The size of each node."
+  default     = "Standard_D1_v2"
 }
 
 variable "dns_prefix" {

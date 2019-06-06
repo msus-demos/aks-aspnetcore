@@ -8,9 +8,9 @@ resource "azurerm_kubernetes_cluster" "default" {
 
   agent_pool_profile {
     name            = "default"
-    count           = "${var.node_count}"
-    vm_size         = "${var.node_type}"
-    os_type         = "${var.node_os}"
+    count           = "${var.linux_node_count}"
+    vm_size         = "${var.linux_node_sku}"
+    os_type         = "Linux"
     os_disk_size_gb = 30
     vnet_subnet_id  = "${azurerm_subnet.aks.id}"
     type            = "VirtualMachineScaleSets"
@@ -18,9 +18,9 @@ resource "azurerm_kubernetes_cluster" "default" {
 
   agent_pool_profile {
     name            = "windows"
-    count           = "${var.node_count}"
-    vm_size         = "${var.node_type}"
-    os_type         = "windows"
+    count           = "${var.windows_node_count}"
+    vm_size         = "${var.windows_node_sku}"
+    os_type         = "Windows"
     os_disk_size_gb = 30
     vnet_subnet_id  = "${azurerm_subnet.aks.id}"
     type            = "VirtualMachineScaleSets"
