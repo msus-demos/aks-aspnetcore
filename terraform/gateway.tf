@@ -1,7 +1,7 @@
 locals {
 
-  gateway_name                   = "${var.name}-gateway"
-  gateway_ip_name                = "${var.name}-ip"
+  gateway_name                   = "${var.name}-${var.environment}-gateway"
+  gateway_ip_name                = "${var.name}-${var.environment}-ip"
   gateway_ip_config_name         = "${var.name}-ipconfig"
   frontend_port_name             = "${var.name}-feport"
   frontend_ip_configuration_name = "${var.name}-feip"
